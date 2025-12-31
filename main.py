@@ -24,7 +24,7 @@ st.markdown(f"""
 # Sidebar com sua Logo
 with st.sidebar:
     # Tentativa de link direto da sua logo no GitHub
-    st.image(https://raw.githubusercontent.com/atelierimagem1-svg/App-Herbert-interiores/main/MARCA%20COMPLETA%20HM.png)
+    st.image("https://raw.githubusercontent.com/atelierimagem1-svg/App-Herbert-interiores/main/MARCA%20COMPLETA%20HM.png)
     st.markdown("---")
     menu = st.radio("MENU", ["✨ Meus Projetos", "🛒 Shopping List", "🤖 IA Style Consultant"])
 
