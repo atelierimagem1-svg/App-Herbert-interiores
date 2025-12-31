@@ -1,35 +1,68 @@
 import streamlit as st
 
-st.set_page_config(page_title="Herbert Martins - Design Experience", layout="wide")
+# 1. Configuração da Página e Estilo (CSS Personalizado)
+st.set_page_config(page_title="Herbert Martins | Design & IA", layout="wide")
 
-# Sidebar com informações do profissional
-st.sidebar.title("Herbert Martins")
-st.sidebar.write("Design de Interiores | 3D Art")
-st.sidebar.image("https://via.placeholder.com/150") # Link para sua foto ou logo
+st.markdown("""
+    <style>
+    /* Fundo e Cores Globais */
+    .stApp {
+        background-color: #F8F9FA;
+    }
+    /* Barra Lateral */
+    [data-testid="stSidebar"] {
+        background-color: #1A1A1A;
+    }
+    [data-testid="stSidebar"] * {
+        color: white !important;
+    }
+    /* Títulos e Botões */
+    h1, h2, h3 {
+        color: #2C3E50;
+        font-family: 'Helvetica Neue', sans-serif;
+    }
+    .stButton>button {
+        background-color: #D4AF37; /* Dourado */
+        color: white;
+        border-radius: 5px;
+        border: none;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
-# Menu de Navegação
-menu = st.sidebar.radio("Navegar", ["Meus Projetos", "Shopping List", "Diário de Obra"])
+# 2. Barra Lateral com sua Logo
+with st.sidebar:
+    # Substitua o link abaixo pelo link direto da sua imagem/logo
+    st.image("https://seu-site.com.br/sua-logo.png", width=200) 
+    st.markdown("---")
+    menu = st.radio("Navegação Exclusiva", ["✨ Meus Projetos", "🛒 Shopping List", "🏗️ Diário de Obra", "🤖 IA Style Consultant"])
 
-if menu == "Meus Projetos":
-    st.title("🖼 Meus Projetos: Residência Alpha")
+# 3. Conteúdo das Abas
+if menu == "✨ Meus Projetos":
+    st.title("Residência Alpha")
+    st.write("---")
     col1, col2 = st.columns(2)
     with col1:
-        st.subheader("Sala de Estar - Render 3D")
-        st.image("https://via.placeholder.com/600x400", caption="Estilo Japandi Moderno")
+        st.subheader("Living Room - Render 3D")
+        # Coloque o link da sua imagem real aqui
+        st.image("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6", caption="Visualização em Alta Definição")
     with col2:
-        st.subheader("Planta Baixa")
-        st.info("O arquivo PDF da planta executiva está disponível para download abaixo.")
-        st.button("Download Planta.pdf")
+        st.subheader("Planta Executiva")
+        st.info("O detalhamento técnico está pronto para sua revisão.")
+        st.button("📄 Baixar Projeto Completo (PDF)")
 
-elif menu == "Shopping List":
-    st.title("🛒 Lista de Especificações")
-    st.table({
-        "Item": ["Sofá Minimalista", "Pendente Bronze", "Revestimento Amadeirado"],
-        "Marca": ["Loja X", "Marca Y", "Portobello"],
-        "Status": ["Aprovado", "Pendente", "Em Orçamento"]
-    })
+elif menu == "🛒 Shopping List":
+    st.title("Seleção de Mobiliário e Acabamentos")
+    st.write("Itens curados especificamente para seu estilo.")
+    items = [
+        {"Item": "Sofá Design", "Marca": "Artefacto", "Status": "Aprovado"},
+        {"Item": "Luminária Pendente", "Marca": "Lumini", "Status": "Aguardando"},
+        {"Item": "Piso Calacatta", "Marca": "Portobello", "Status": "Em Trânsito"}
+    ]
+    st.table(items)
 
-elif menu == "Diário de Obra":
-    st.title("🏗 Acompanhamento da Obra")
-    st.progress(65)
-    st.write("Fase atual: Instalação de iluminação e marcenaria.")
+elif menu == "🤖 IA Style Consultant":
+    st.title("Consultoria com IA")
+    st.write("Use os **Prompts de Ouro** do Prof. Herbert para explorar novas variações para seus ambientes.")
+    prompt_escolhido = st.selectbox("Escolha um ambiente para testar:", ["Sala Japandi", "Cozinha Industrial", "Quarto Spa"])
+    st.code("Copiado! Agora cole na sua ferramenta de IA preferida.")
